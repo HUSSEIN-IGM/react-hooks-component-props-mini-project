@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import About from "../components/About";
-import logo from "../assets/logo"
+import logo from "../assets/logo"; // ✅ logo is a base64 string
 
 test("renders a <aside> element", () => {
   const { container } = render(<About />);
@@ -12,7 +12,7 @@ test("renders a <img> with the blog logo and alt text of 'blog logo'", () => {
   render(<About image={logo} />);
   const img = screen.queryByAltText("blog logo");
   expect(img).toBeInTheDocument();
-  expect(img.src).toContain(logo);
+  expect(img.src).toContain(logo); // ✅ checks for base64 string
 });
 
 test("uses a default value for the image if no image is passed as a prop", () => {
